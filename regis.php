@@ -1,5 +1,27 @@
 <?php 
-	
+	include "koneksi.php";
+	session_start();
+
+	if (isset($_SESSION["login"])) {
+		header("location: index.php");
+	}
+
+	if (isset($_POST["submit"])) {
+		// mengecek apakah registrasi berhasil atau tidak
+		if (registrasi($_POST) > 0) {
+			echo("asd
+				<script>
+					alert('Registrasi telah berhasil');
+				</script>
+				");
+			echo("<script> alert('regis bisa'); </script>");
+			header("location: login.php");
+		}
+		else{
+			echo mysqli_error($koneksi); 
+		}
+	}
+
  ?>
 
 
@@ -8,7 +30,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<title>Document</title>
+	<title>Registrasi</title>
 	<style>
 		@font-face{
 			font-family: 'brush-script-mt';
@@ -32,21 +54,20 @@
 	<div class="card mx-auto" style="width: 24rem; margin-top: 100px;">
 		<div class="card-body">
 			<h1>Registrasi</h1>
-			<form>
+			<form method="post">
 				<div class="form-group">
 		    		<label for="email">Email Address</label>
-		    		<input type="text" class="form-control" id="email" placeholder="Email Adress" autocomplete="off">
+		    		<input type="text" class="form-control" name="email" id="email" placeholder="Email Adress" autocomplete="off" required="">
 		  		</div>
 		  		<div class="form-group">
 		    		<label for="username">Username</label>
-		    		<input type="text" class="form-control" id="username" placeholder="username" autocomplete="off">
+		    		<input type="text" class="form-control" name="username" id="username" placeholder="username" autocomplete="off" required="">
 		  		</div>
 		  		<div class="form-group">
 		    		<label for="password">Password</label>
-		    		<input type="password" class="form-control" id="password" placeholder="Password">
+		    		<input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
 		 		 </div>
-		 		 <i class="bi bi-eye-slash" id="togglePassword"></i>
-		  		<button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+		  		<button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">Submit</button>
 			</form>
 			<a id="lupa" href="login.php">Lupa Password ?</a>
 			<p>Sudah punya akun ? <a href="login.php">Login</a></p>
