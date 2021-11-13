@@ -20,6 +20,7 @@
 		$username = htmlspecialchars($data["username"]);
 		$password = htmlspecialchars($data["password"]);
 		$email = htmlspecialchars($data["email"]);
+		$role = "user";
 		
 		// konfirmasi username
 		$result = mysqli_query($koneksi, "SELECT * FROM user WHERE username = '$username'");
@@ -36,7 +37,7 @@
 		$password = password_hash($password, PASSWORD_DEFAULT);
 
 		// memasukkan data ke database
-		mysqli_query($koneksi , "INSERT INTO user VALUES('','$username','$password' , '$email')");
+		mysqli_query($koneksi , "INSERT INTO user VALUES('','$username','$password' , '$email' , '$role')");
 
 		//return value
 		return mysqli_affected_rows($koneksi);
