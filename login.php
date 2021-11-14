@@ -1,4 +1,12 @@
 <?php 
+	include "koneksi.php";
+	session_start();
+
+	if (isset($_SESSION["login"])) {
+		header("location: index.php");
+	}
+
+
 	
  ?>
 
@@ -14,11 +22,21 @@
 			font-family: 'brush-script-mt';
 			src : url(font/BRUSHSCI.ttf) format('truetype');
 		}
+		body{
+			animation: color 5s linear 0s infinite alternate running;
+		}
 		h1{
 			font-family: 'brush-script-mt', sans-serif;
 			font-size: 50px;
 			
 			text-align: center; 
+		}
+		@keyframes color { 
+			0% { background-color: #f1c40f; } 
+			32% { background-color: #e74c3c; } 
+			55% { background-color: #9b59b6; } 
+			76% { background-color: #16a085; } 
+			100% { background-color: #2ecc71; } 
 		}
 	</style>
 </head>
