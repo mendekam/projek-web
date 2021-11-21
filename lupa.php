@@ -1,5 +1,5 @@
 <?php 
-	include "koneksi.php";
+	include 'koneksi.php';
 	session_start();
 
 	if (isset($_SESSION["login"])) {
@@ -7,41 +7,53 @@
 	}
 
 	if (isset($_POST["submit"])) {
-		// mengecek apakah registrasi berhasil atau tidak
-		if (registrasi($_POST) > 0) {
-			echo("
-				<script>
-					alert('Registrasi telah berhasil');
-				</script>
-				");
+		$email = htmlspecialchars($_POST["email"]);
+		$passwordBaru = htmlspecialchars($_POST["passwordBaru"]);
+		$result = query("SELECT * from user WHERE email = '$email' ");
+
+		// mengecek apakah email yang diinput ada di database
+		if (count($result) > 0) {
+			// enkripsi password baru
+			$passwordBaru = password_hash($passwordBaru, PASSWORD_DEFAULT);
+
+			// mengganti pasword lama dengan password baru
+			$query = "UPDATE user SET password = '$passwordBaru' WHERE email = '$email' ";
+
+			mysqli_query($koneksi,$query);
+			if (mysqli_error($koneksi)) {
+				echo(mysqli_error($koneksi));
+			}
 			header("location: login.php");
 		}
 		else{
-			echo mysqli_error($koneksi); 
+			$error = true;
 		}
+		
 	}
 
- ?>
 
+ ?>
 
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<title>Registrasi</title>
+	<title>Reset Password</title>
 	<style>
-		@font-face{
-			font-family: 'brush-script-mt';
-			src : url(font/BRUSHSCI.ttf) format('truetype');
-		}
 		body{
 			animation: color 10s linear 0s infinite alternate running;
 		}
 		h1{
-			font-family: 'brush-script-mt', sans-serif;
-			font-size: 50px;
+			font-family: montserrat;
+			font-size: 36px;
 			text-align: center; 
+		}
+		#lupa{
+			display: inline-block;
+			margin-left: 120px;
+			margin-bottom: 12px;
+			color: black;
 		}
 		@keyframes color { 
 			0% { background-color: #f1c40f; } 
@@ -56,24 +68,23 @@
 <body>
 	<div class="card mx-auto" style="width: 24rem; margin-top: 100px;">
 		<div class="card-body">
-			<h1>Registrasi</h1>
+			<h1>Lupa Password ?</h1>
+			<p class="text-center mb-4">Masukkan email yang telah anda daftarkan sebelumnya dan password baru</p>
+
+			<?php if (isset($error)): //pengecekan error ?>
+				<p class="font-italic text-danger">Email yang anda masukkan tidak terdaftar</p>
+			<?php endif;  ?>
+
 			<form method="post">
 				<div class="form-group">
-		    		<label for="email">Email Address</label>
 		    		<input type="text" class="form-control" name="email" id="email" placeholder="Email Adress" autocomplete="off" required="">
 		  		</div>
 		  		<div class="form-group">
-		    		<label for="username">Username</label>
-		    		<input type="text" class="form-control" name="username" id="username" placeholder="username" autocomplete="off" required="">
-		  		</div>
-		  		<div class="form-group">
-		    		<label for="password">Password</label>
-		    		<input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
+		    		<input type="password" class="form-control" name="passwordBaru" id="password" placeholder="Password baru" required="">
 		 		 </div>
-		  		<button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">Submit</button>
+		  		<button type="submit" class="btn btn-primary my-3" name="submit" style="width: 100%;">Submit</button>
 			</form>
-			<p>Sudah punya akun ? <a href="login.php">Login</a></p>
-			
+			<p>Kembali ke <a href="login.php">Login</a></p>	
 		</div>
 	</div>
 

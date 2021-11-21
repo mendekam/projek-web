@@ -44,13 +44,19 @@
 			src : url(font/BRUSHSCI.ttf) format('truetype');
 		}
 		body{
-			animation: color 5s linear 0s infinite alternate running;
+			animation: color 10s linear 0s infinite alternate running;
 		}
 		h1{
 			font-family: 'brush-script-mt', sans-serif;
 			font-size: 50px;
 			
 			text-align: center; 
+		}
+		#lupa{
+			display: inline-block;
+			margin-left: 120px;
+			margin-bottom: 12px;
+			color: black;
 		}
 		@keyframes color { 
 			0% { background-color: #f1c40f; } 
@@ -79,6 +85,7 @@
 		 		 </div>
 		  		<button type="submit" name="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
 			</form>
+			<a id="lupa" href="lupa.php">Lupa Password ?</a>
 			<p>Belum punya akun ? <a href="regis.php">Registrasi</a></p>
 			
 		</div>
