@@ -27,46 +27,40 @@
 			$error = true;
 		}
 	}
-
-
- ?>
-
+?>
 
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">		
 	<title>Login</title>
 	<style>
-		@font-face{
-			font-family: 'brush-script-mt';
-			src : url(font/BRUSHSCI.ttf) format('truetype');
-		}
 		body{
 			animation: color 5s linear 0s infinite alternate running;
 		}
 		h1{
-			font-family: 'brush-script-mt', sans-serif;
+			font-family: 'Secular One', sans-serif;
 			font-size: 50px;
-			
 			text-align: center; 
 		}
-		@keyframes color { 
-			0% { background-color: #f1c40f; } 
-			32% { background-color: #e74c3c; } 
-			55% { background-color: #9b59b6; } 
-			76% { background-color: #16a085; } 
-			100% { background-color: #2ecc71; } 
+		a{
+			color: #000;
+		}
+		label{
+			font-family: 'Secular One', sans-serif;
 		}
 	</style>
 </head>
 <body>
-	<div class="card mx-auto" style="width: 23rem; margin-top: 120px;">
+	<div class="card mx-auto bg-light" style="width: 23rem; margin-top: 120px;">
 		<div class="card-body">
 			<h1>Login</h1>
 			<?php if (isset($error)): //pengecekan error username atau password?> 
-				<p class="font-italic text-danger">username atau password salah</p>
+				<p class="font-italic badge badge-danger">Username atau password salah!</p>	
 			<?php endif; ?>
 			<form method="post">
 		  		<div class="form-group">
@@ -75,12 +69,15 @@
 		  		</div>
 		  		<div class="form-group">
 		    		<label for="password">Password</label>
-		    		<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+		    		<input type="password" class="form-control" name="password" id="password" placeholder="password">
 		 		 </div>
-		  		<button type="submit" name="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+		  		<button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">Submit</button>
 			</form>
-			<p>Belum punya akun ? <a href="regis.php">Registrasi</a></p>
-			
+			<p>Belum punya akun? 
+				<span class="badge badge-info">
+					<a href="regis.php">Registrasi</a>
+				</span>
+			</p>
 		</div>
 	</div>
 
