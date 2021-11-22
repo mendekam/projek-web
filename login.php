@@ -15,8 +15,10 @@
 
 		if (count($result) > 0) {
 			$password2 = $result[0]["password"];
+			$role = $result[0]["role"];
 			if (password_verify($password, $password2)) {
 				$_SESSION["login"] = true;
+				$_SESSION["role"] = $role;
 				header("location: index.php");
 			}
 			else{

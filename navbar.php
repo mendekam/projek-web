@@ -7,6 +7,7 @@
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div class="navbar-nav">
 			<a class="nav-item nav-link active" href="index.php">Home<span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="input_produk.php">Tambah produk<span class="sr-only">(current)</span></a>
 		</div>
 		<div class="navbar-nav ml-auto">
 			<a class="nav-item nav-link " href="cart.php"><img src="./img/cart.png" width="25px" height="25px"alt=""></a>
