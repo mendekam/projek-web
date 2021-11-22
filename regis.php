@@ -63,7 +63,7 @@
 			<form method="post">
 				<div class="form-group">
 		    		<label for="email">Email Address</label>
-		    		<input type="text" class="form-control" name="email" id="email" placeholder="Email Adress" autocomplete="off" required="">
+		    		<input type="text" class="form-control" name="email" id="email" placeholder="email adress" autocomplete="off" required="">
 		  		</div>
 		  		<div class="form-group">
 		    		<label for="username">Username</label>
