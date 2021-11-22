@@ -42,8 +42,85 @@
 		//return value
 		return mysqli_affected_rows($koneksi);
 
-	} 
+	}
 
+	function tambah($data){
+		global $koneksi;
+		// Masukkan tiap elemen ke dalam file
+		$name = htmlspecialchars($data["name"]);
+		$desc = htmlspecialchars($data["description"]);
+		$price = htmlspecialchars($data["price"]);
+		$stock = htmlspecialchars($data["stock"]);
+		date_default_timezone_set('Asia/Jakarta');
+		$waktu = date('Y-m-d H:i:s');
+
+		$image_path = upload();
+		if (!upload()){
+			return false;
+		}
+
+
+		$query = "INSERT INTO product
+					VALUES ('' , '$name' , '$desc' , '$price' , '$stock' , '$image_path' , '$waktu' , '$waktu')";
+		mysqli_query($koneksi , $query);
+
+		return mysqli_affected_rows($koneksi);
+	}
+
+	function upload(){
+		$namaFile = $_FILES["image"]["name"];
+		$ukuranFile = $_FILES["image"]["size"];
+		$tmpFile = $_FILES["image"]["tmp_name"];
+		$errorFile = $_FILES["image"]["error"];
+
+
+		// jika gambar tidak diupload
+		if ($errorFile == 4) {
+			echo(
+				"<script>
+					alert('gambar tidak diupload, mohon untuk upload gambar');
+				</script>
+				"
+			);
+			return false;
+		}
+
+		// mengecek format file yang diupload
+		$formatFileValid = ["jpg" , "jpeg" , "png"];
+		$format = pathinfo($namaFile , PATHINFO_EXTENSION);
+		if ( !in_array($format, $formatFileValid)) {
+			echo(
+				"<script>
+					alert('extensi file yang diupload tidak cocok , pastika extensi file adalah jpg, jpeg, atau png')
+				</script>
+				"
+			);
+			return false;
+		}
+
+		// mengecek ukuran file besar atau kecil
+		if ($ukuranFile > 1000000) {
+			echo(
+				"<script>
+					alert('file yang diupload terlalu besar, maksimal ukuran file adalah 1 mb')
+				</script>
+				"
+			);
+			return false;
+		}
+
+		// jika lolos semua seleksi maka file siap diupload
+		// mengubah nama dan tempat penyimpanan file
+		// file akan disimpan di folder img/img-produk
+		$namaFile = uniqid();
+		$namaFile = $namaFile . '.' . $format;
+		$image_path = 'img/img-produk/'. $namaFile;
+		move_uploaded_file($tmpFile , $image_path); 
+		
+		return $image_path;
+
+
+	}
 
 
 

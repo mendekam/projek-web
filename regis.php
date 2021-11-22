@@ -31,11 +31,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">		
-	<title>Login</title>
+	<title>Registrasi</title>
 	<style>
-		body{
-			animation: color 5s linear 0s infinite alternate running;
-		}
 		body{
 			animation: color 10s linear 0s infinite alternate running;
 		}
@@ -78,7 +75,6 @@
 		 		 </div>
 		  		<button type="submit" class="btn btn-dark" name="submit" style="width: 100%;">Submit</button>
 			</form>
-			<a id="lupa" href="login.php">Lupa Password?</a>
 			<p>Sudah punya akun? 
 				<span class="badge badge-info">
 					<a href="login.php">Login</a>

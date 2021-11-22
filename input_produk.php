@@ -1,3 +1,34 @@
+<?php 
+	session_start();
+	if (!isset($_SESSION["role"])) {
+		header("location: index.php");
+	}
+	include 'koneksi.php';
+
+	if (isset($_POST["submit"])) {
+
+		// mengecek apakah berhasil query atau tidak
+		if ( tambah($_POST) > 0) {
+			echo("
+				<script>
+					alert('data berhasil ditambahkan !');
+					document.location.href = 'index.php';
+				</script>
+			");
+		}else{
+			echo("
+				<script>
+					alert('data gagal ditambahkan !');
+					document.location.href = 'index.php';
+				</script>
+			");
+		}		
+	}
+
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +67,7 @@
 
 	<section>
         <div class="container py-3 px-3">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="form-group mb-3">
                     <label for="name">Nama Produk</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="nama produk" required="">
@@ -49,9 +80,13 @@
                     <label for="price">Harga</label>
                     <input type="text" class="form-control" name="price" id="price" placeholder="harga produk(rupiah)" required="">
                 </div>
+                <div class="form-group mb-3">
+                    <label for="stock">Stok</label>
+                    <input type="text" class="form-control" name="stock" id="stock" placeholder="stok barang" required="">
+                </div>
                 <div class="custom-file mb-3">
                     <input type="file" class="custom-file-input" name="image" id="image">
-                    <label class="custom-file-label" for="image">Choose file</label>
+                    <label class="custom-file-label" for="image">Choose File</label>
                 </div>
                 <div class="container">
                     <button type="submit" class="btn btn-dark" name="submit" style="width: 20%;">Submit</button>

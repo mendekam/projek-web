@@ -15,8 +15,10 @@
 
 		if (count($result) > 0) {
 			$password2 = $result[0]["password"];
+			$role = $result[0]["role"];
 			if (password_verify($password, $password2)) {
 				$_SESSION["login"] = true;
+				$_SESSION["role"] = $role;
 				header("location: index.php");
 			}
 			else{
@@ -47,6 +49,13 @@
 			font-size: 50px;
 			text-align: center; 
 		}
+		@keyframes color { 
+			0% { background-color: #f1c40f; } 
+			32% { background-color: #e74c3c; } 
+			55% { background-color: #9b59b6; } 
+			76% { background-color: #16a085; } 
+			100% { background-color: #2ecc71; } 
+		}
 		a{
 			color: #000;
 		}
@@ -73,6 +82,7 @@
 		 		 </div>
 		  		<button type="submit" name="submit" class="btn btn-dark" style="width: 100%;">Submit</button>
 			</form>
+			<a id="lupa" href="lupa.php">Lupa Password?</a>
 			<p>Belum punya akun? 
 				<span class="badge badge-info">
 					<a href="regis.php">Registrasi</a>
