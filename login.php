@@ -40,7 +40,7 @@
 	<title>Login</title>
 	<style>
 		body{
-			animation: color 5s linear 0s infinite alternate running;
+			animation: color 10s linear 0s infinite alternate running;
 		}
 		h1{
 			font-family: 'Secular One', sans-serif;
