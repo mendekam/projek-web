@@ -39,21 +39,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
 	<title>Reset Password</title>
 	<style>
 		body{
 			animation: color 10s linear 0s infinite alternate running;
 		}
 		h1{
-			font-family: montserrat;
+			font-family: 'Secular One', sans-serif;
 			font-size: 36px;
 			text-align: center; 
-		}
-		#lupa{
-			display: inline-block;
-			margin-left: 120px;
-			margin-bottom: 12px;
-			color: black;
 		}
 		@keyframes color { 
 			0% { background-color: #f1c40f; } 
@@ -62,11 +59,17 @@
 			76% { background-color: #16a085; } 
 			100% { background-color: #2ecc71; } 
 		}
+		a{
+			color: #000;
+		}
+		label{
+			font-family: 'Secular One', sans-serif;
+		}
 	</style>
 	
 </head>
 <body>
-	<div class="card mx-auto" style="width: 24rem; margin-top: 100px;">
+	<div class="card mx-auto bg-light" style="width: 24rem; margin-top: 100px;">
 		<div class="card-body">
 			<h1>Lupa Password ?</h1>
 			<p class="text-center mb-4">Masukkan email yang telah anda daftarkan sebelumnya dan password baru</p>
@@ -77,14 +80,20 @@
 
 			<form method="post">
 				<div class="form-group">
+					<label for="email">Email Adress</label>
 		    		<input type="text" class="form-control" name="email" id="email" placeholder="Email Adress" autocomplete="off" required="">
 		  		</div>
 		  		<div class="form-group">
+		  			<label for="password">Password</label>
 		    		<input type="password" class="form-control" name="passwordBaru" id="password" placeholder="Password baru" required="">
 		 		 </div>
-		  		<button type="submit" class="btn btn-primary my-3" name="submit" style="width: 100%;">Submit</button>
+		  		<button type="submit" class="btn btn-dark" name="submit" style="width: 100%;">Submit</button>
 			</form>
-			<p>Kembali ke <a href="login.php">Login</a></p>	
+			<p>Kembali ke
+				<span class="badge badge-info">
+					<a href="login.php">Login</a>
+				</span>
+			</p>
 		</div>
 	</div>
 
