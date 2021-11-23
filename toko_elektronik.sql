@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2021 at 12:25 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- Generation Time: Nov 23, 2021 at 04:11 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,10 +32,24 @@ CREATE TABLE `product` (
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `price` bigint(20) NOT NULL,
+  `stock` int(11) DEFAULT NULL,
   `image_path` varchar(1024) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `image_path`, `created_at`, `updated_at`) VALUES
+(1, 'Percobaan 1', 'Barang tidak berharga', 69696969, NULL, 'img/img-produk', '2021-11-22 13:56:42', '2021-11-22 20:56:42'),
+(2, 'TV Elektronik', 'asdsa', 500000, NULL, 'img/img-produk619ba761d6849.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'TV Elektronik', 'wrqwrq', 500000, NULL, 'img/img-produk/619ba7a38e3e7.jpeg', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'TV Elektronik', 'ZDDafasfsa', 500000, NULL, 'img/img-produk/619ba7c6b19cf.png', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'TV Elektronik', '124124', 500000, NULL, 'img/img-produk/619ba9330e80f.png', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'TV Elektronik', 'dgsaf', 500000, NULL, 'img/img-produk/619baae044e77.png', '2021-11-22 14:36:16', '2021-11-22 21:36:16'),
+(7, 'TV Elektronik', 'asfasfasf', 500000, 100, 'img/img-produk/619bae14807a8.png', '2021-11-22 14:49:56', '2021-11-22 21:49:56');
 
 -- --------------------------------------------------------
 
@@ -84,7 +98,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
