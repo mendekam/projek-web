@@ -2,7 +2,6 @@
 	session_start();
 	include 'koneksi.php';
 	$produk = query("SELECT * FROM product");
-
  ?>
 
 <!DOCTYPE html>
@@ -50,7 +49,14 @@
 
 			<?php for ($i=0; $i < count($produk) ; $i++) : ?>				
 				<div class="col-md mb-5">
-          			<div class="card h-100" >
+          			<div class="card h-100">
+          				<?php if(isset($_SESSION['role'])) : // pengecekan role ?>
+          					<?php if($_SESSION['role'] == 'admin') : ?>
+          						<div class="badge bg-warning position-absolute" style="top: 0.5rem; left: 0.5rem"><a href="update.php" class="text-dark">Update</a></div>
+          						<div class="badge bg-danger position-absolute" style="top: 2rem; left: 0.5rem"><a href="delete.php" class="text-dark">Delete</a></div>
+          					<?php endif; ?>
+          				<?php endif; ?>
+          				<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
             			<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="Card image cap">
             			<div class="card-body p-4">
             				<div class="text-center">
