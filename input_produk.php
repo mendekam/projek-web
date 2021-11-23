@@ -8,7 +8,7 @@
 	if (isset($_POST["submit"])) {
 
 		// mengecek apakah berhasil query atau tidak
-		if ( tambah($_POST) > 0) {
+		if (tambah($_POST) > 0) {
 			echo("
 				<script>
 					alert('data berhasil ditambahkan !');
@@ -34,7 +34,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
@@ -84,11 +84,11 @@
                     <label for="stock">Stok</label>
                     <input type="text" class="form-control" name="stock" id="stock" placeholder="stok barang" required="">
                 </div>
-                <div class="custom-file mb-3">
-                    <input type="file" class="custom-file-input" name="image" id="image">
-                    <label class="custom-file-label" for="image">Choose File</label>
+                <div class="mb-3">
+					<label for="formFile" class="form-label">Gambar</label>
+  					<input class="form-control" type="file" id="formFile">
                 </div>
-                <div class="container">
+                <div class="mb-3">
                     <button type="submit" class="btn btn-dark" name="submit" style="width: 20%;">Submit</button>
                 </div>
                 
@@ -102,8 +102,9 @@
     </footer>
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	
 	</body>
 </html>
