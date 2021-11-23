@@ -1,6 +1,11 @@
 <?php 
 	session_start();
-	
+	include 'koneksi.php';
+	$produk = query("SELECT * FROM product");
+
+
+
+
  ?>
 
 <!DOCTYPE html>
@@ -31,7 +36,7 @@
 
 <body>
 	<?php include('navbar.php')?>
-	<header class="bg-secondary py-5"">
+	<header class="bg-secondary py-5">
 		<div class="container mx-auto my-5">
 			<div class="text-center text-white">
 				<h1 class="display-4 fw-bolder">E L J I</h1>
@@ -41,7 +46,34 @@
 	</header>
 
 	<section>
-		
+		<div class="container">
+			<h1>List Produk</h1>
+			<!-- menampilkan isi dari database ke dalam bentuk card -->
+			<?php for($i = 0;$i < count($produk); $i++) : ?>
+				<?php if($i % 3 == 0) : ?>
+					<div class="row m-3">
+				<?php endif; ?>
+				<div class="col-md m-3">
+          			<div class="card" style="width: 295px;">
+            			<img class="card-img-top" src="img/kirua.jpg" alt="Card image cap">
+            			<div class="card-body">
+            				<h4><?php echo($produk[$i]['name']); ?> </h4>
+             				<p class="card-text"><?php echo($produk[$i]['description']);  ?> </p>
+             				<p class="card-text">Harga : <?php echo($produk[$i]['price']);  ?> </p>
+              				<a href="">Beli</a>
+              				<a href="">gak beli</a>
+            			</div>
+          			</div>
+        		</div>
+
+
+
+
+				<?php if($i % 3 == 2) : ?>
+					</div>
+				<?php endif; ?>
+			<?php endfor;  ?>
+		</div>
 	</section>
 
 	<footer class="py-5 bg-secondary">
