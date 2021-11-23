@@ -33,20 +33,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">		
 	<title>Registrasi</title>
 	<style>
-		body{
-			animation: color 10s linear 0s infinite alternate running;
-		}
 		h1{
 			font-family: 'Secular One', sans-serif;
 			font-size: 50px;
 			text-align: center; 
-		}
-		@keyframes color { 
-			0% { background-color: #f1c40f; } 
-			32% { background-color: #e74c3c; } 
-			55% { background-color: #9b59b6; } 
-			76% { background-color: #16a085; } 
-			100% { background-color: #2ecc71; } 
 		}
 		a{
 			color: #000;
