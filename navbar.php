@@ -2,10 +2,6 @@
 	<div class="container-fluid">
 		<h2><a class="navbar-brand" href="#">E L J I</a></h2>
 		<div class="navbar-nav">
-			<a class="nav-item nav-link active" href="index.php">Home<span class="sr-only">(current)</span></a>
-			<?php if(isset($_SESSION["role"]) && $_SESSION["role"] == "admin"):?>
-			<a class="nav-item nav-link" href="input_produk.php">Tambah produk<span class="sr-only">(current)</span></a>
-			<?php endif; ?>
 			<a class="nav-link active" aria-current="page" href="index.php">Home</a>
 		</div>
 		<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
