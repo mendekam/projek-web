@@ -118,11 +118,64 @@
 		move_uploaded_file($tmpFile , $image_path); 
 		
 		return $image_path;
-
-
 	}
 
+	function ubah($data , $id){
+		global $koneksi;
+		date_default_timezone_set('Asia/Jakarta');
+		$waktu = date('Y-m-d H:i:s');
 
+		$name = htmlspecialchars($data["name"]);
+		$price = htmlspecialchars($data["price"]);
+		$stock = htmlspecialchars($data["stock"]);
+		$errorFile = $_FILES["image"]["error"];
+		$imageLama = $data["imageLama"];
+		
+
+		// pengecekan apakah deskripsi kosong atau tidak
+		if (htmlspecialchars($data["description"]) == '') {
+			$desc = $data["descriptionLama"];
+		}
+		else{
+			$desc = htmlspecialchars($data["description"]);
+		}
+
+
+		// pengecekan apakah upload gambar atau tidak
+		if ($errorFile == 4) {
+			$image_path = $data["imageLama"];
+		}
+		else{
+			$image_path = upload();
+		}
+		
+		$query = "UPDATE product SET 
+					name = '$name' , 
+					description = '$desc' ,
+					price = '$price' ,
+					stock = '$stock' ,
+					image_path = '$image_path' ,
+					updated_at = '$waktu'
+					WHERE id = '$id'  ";
+
+		mysqli_query($koneksi,$query);
+		if (mysqli_error($koneksi)) {
+			echo(mysqli_error($koneksi));
+			die();
+		}
+		return mysqli_affected_rows($koneksi);			
+	}
+
+	function hapus($id){
+		global $koneksi;
+		//query data yang dihapus
+		mysqli_query($koneksi , "DELETE FROM product WHERE id='$id' ");
+		if (mysqli_error($koneksi)) {
+			echo(mysqli_error($koneksi));
+			die();
+		}
+		return mysqli_affected_rows($koneksi);
+	}
 
 
  ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 	// pengecekan session login dan role
 	if (!isset($_SESSION["login"])) {
@@ -8,31 +8,32 @@
 	if ($_SESSION['role'] != 'admin') {
 		header("location: index.php");
 	}
-
+	
 	include 'koneksi.php';
-
-	if (isset($_POST["submit"])) {
-
+	$id = $_GET["id"];
+	$data = query("SELECT * FROM product WHERE id='$id'")[0];
+	if( isset($_POST["submit"])){
 		// mengecek apakah berhasil query atau tidak
-		if ( tambah($_POST) > 0) {
+		if ( ubah($_POST , $id) > 0) {
 			echo("
 				<script>
-					alert('data berhasil ditambahkan !');
+					alert('data berhasil diubah !');
 					document.location.href = 'index.php';
 				</script>
 			");
 		}else{
 			echo("
 				<script>
-					alert('data gagal ditambahkan !');
+					alert('data gagal diubah !');
 					document.location.href = 'index.php';
 				</script>
 			");
 		}		
 	}
-
-
+	
  ?>
+
+
 
 
 <!DOCTYPE html>
@@ -46,6 +47,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
 	<title>Toko Elji</title>
 	<style>
+		body{
+			animation: color 5s linear 0s infinite alternate running;
+		}
 		h2{
 			font-family: 'Secular One', sans-serif;
 		}
@@ -71,9 +75,11 @@
 	<section>
         <div class="container py-3 px-3">
             <form method="post" enctype="multipart/form-data">
+            	<input type="hidden" name="imageLama" value="<?php echo($data["image_path"]) ?>">
+            	<input type="hidden" name="descriptionLama" value="<?php echo($data["description"]) ?>">
                 <div class="form-group mb-3">
                     <label for="name">Nama Produk</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="nama produk" required="">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="nama produk" required="" value="<?php echo($data["name"]) ?>">
                 </div>
                 <div class="form-group mb-3">
                     <label for="description">Deskripsi</label>
@@ -81,11 +87,11 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="price">Harga</label>
-                    <input type="text" class="form-control" name="price" id="price" placeholder="harga produk(rupiah)" required="">
+                    <input type="text" class="form-control" name="price" id="price" placeholder="harga produk(rupiah)" required="" value="<?php echo($data["price"]) ?>">
                 </div>
                 <div class="form-group mb-3">
                     <label for="stock">Stok</label>
-                    <input type="text" class="form-control" name="stock" id="stock" placeholder="stok barang" required="">
+                    <input type="text" class="form-control" name="stock" id="stock" placeholder="stok barang" required="" value="<?php echo($data["stock"]) ?>">
                 </div>
                 <div class="custom-file mb-3">
                     <input type="file" class="custom-file-input" name="image" id="image">
