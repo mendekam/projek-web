@@ -8,6 +8,12 @@
     	header("location: login.php");
     }
 
+    if(isset($_SESSION["hapus"])){
+		unset($_SESSION["shopping_cart"]);
+		unset($_SESSION["hapus"]);
+		header("location: login.php");
+	}
+
     if(isset($_POST["add_to_cart"]))
 	{
 		if ($_POST["hidden_stock"] == 0) {
@@ -59,10 +65,8 @@
 			}
 		}
 	}
-	if(isset($_POST["transaksi"])){
-		unset($_SESSION["shopping_cart"]);
-		echo '<script>window.location="index.php"</script>';
-	}
+
+	
 ?>
 <!DOCTYPE html>
 <html>

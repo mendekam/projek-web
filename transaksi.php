@@ -1,7 +1,33 @@
 <?php
     session_start();
+    include 'koneksi.php';
     date_default_timezone_set('Asia/Jakarta');
 	$waktu = date('Y-m-d H:i:s');
+	
+	$shopping_cart = $_SESSION["shopping_cart"];
+
+	if (isset($_POST['transaksi'])) {
+		for ($i=0; $i < count($shopping_cart) ; $i++) { 
+			$id = $shopping_cart[$i]['produk_id'];
+			$qty = $shopping_cart[$i]['produk_quantity'];
+			$result = query("SELECT * FROM product WHERE id = '$id'")[0];
+			$stock = $result['stock'] - $qty;
+			//$stock = $result[$i]['stock'];
+			var_dump($stock);
+			echo("<br>");
+
+			$query = "UPDATE product SET stock = '$stock' WHERE id='$id'";
+			mysqli_query($koneksi,$query);
+			if (mysqli_error($koneksi)) {
+				echo(mysqli_error($koneksi));
+				die();
+			}	
+		}
+
+		$_SESSION["hapus"] = true;
+		header("location: cart.php");
+	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +67,7 @@
             <p>Tanggal Pembelian : <?php echo $waktu;?></p>
             <p>Nomor Rekening : xxxxxxxx</p>
             <div class="py-3">
-                <form action="cart.php" method="post">
+                <form action="" method="post">
                     <button type="submit" class="btn btn-success" name="transaksi" style="width: 15%;">Kembali Ke Halaman Utama</button>
                 </form>
             </div>
