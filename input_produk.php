@@ -88,8 +88,8 @@
                     <input type="text" class="form-control" name="stock" id="stock" placeholder="stok barang" required="">
                 </div>
                 <div class="mb-3">
-					<label for="formFile" class="form-label">Gambar</label>
-  					<input class="form-control" type="file" id="formFile">
+					<label for="image" class="form-label">Gambar</label>
+  					<input class="form-control" type="file" name="image" id="image">
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-dark" name="submit" style="width: 20%;">Submit</button>
