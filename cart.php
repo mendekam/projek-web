@@ -11,11 +11,11 @@
     if(isset($_POST["add_to_cart"]))
 	{
 		if ($_POST["hidden_stock"] == 0) {
-			header("location: index.php");
-			
+			echo '<script>alert("Stock Habis")</script>';
+			echo '<script>window.location="index.php"</script>';
+			die();
 		}
-		if(isset($_SESSION["shopping_cart"]))
-		{
+		if(isset($_SESSION["shopping_cart"])){
 			$item_array_id = array_column($_SESSION["shopping_cart"], "produk_id");
 			if(!in_array($_POST["id"], $item_array_id))
 			{
@@ -58,6 +58,10 @@
 				}
 			}
 		}
+	}
+	if(isset($_POST["transaksi"])){
+		unset($_SESSION["shopping_cart"]);
+		echo '<script>window.location="index.php"</script>';
 	}
 ?>
 <!DOCTYPE html>
@@ -118,7 +122,7 @@
 					<tr>
 						<td><?php echo $values["produk_name"]; ?></td>
 						<td><?php echo $values["produk_quantity"]; ?></td>
-						<td>Rp. <?php echo $values["produk_price"]; ?></td>
+						<td>Rp. <?php echo number_format($values["produk_price"], 2); ?></td>
 						<td>Rp. <?php echo number_format($values["produk_quantity"] * $values["produk_price"], 2);?></td>
 						<td><a href="cart.php?action=delete&id=<?php echo $values["produk_id"]; ?>"><span class="text-danger">Hapus</span></a></td>
 					</tr>
@@ -137,7 +141,10 @@
 				</table>
 			</div>
             <div class="py-3">
-                <button type="submit" class="btn btn-success float-end" name="submit" style="width: 15%;">Check out</button>
+				<form action="transaksi.php" method="post">
+					<input type="hidden" name="hidden_total" value="<?php echo $total; ?>">
+					<button class="btn btn-success float-end"style="width: 15%;">Check out</button>
+				</form>
             </div>
 			
 		</div>
