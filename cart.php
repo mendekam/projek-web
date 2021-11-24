@@ -2,8 +2,18 @@
     session_start();
     include 'koneksi.php';
 
+    if (!isset($_SESSION["login"])) {
+    	session_destroy();
+		session_unset();
+    	header("location: login.php");
+    }
+
     if(isset($_POST["add_to_cart"]))
 	{
+		if ($_POST["hidden_stock"] == 0) {
+			header("location: index.php");
+			
+		}
 		if(isset($_SESSION["shopping_cart"]))
 		{
 			$item_array_id = array_column($_SESSION["shopping_cart"], "produk_id");
@@ -44,7 +54,7 @@
 				{
 					unset($_SESSION["shopping_cart"][$keys]);
 					echo '<script>alert("Produk dihapus")</script>';
-					echo '<script>window.location="index.php"</script>';
+					echo '<script>window.location="cart.php"</script>';
 				}
 			}
 		}

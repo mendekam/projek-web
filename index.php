@@ -3,6 +3,7 @@
 	include 'koneksi.php';
 	$produk = query("SELECT * FROM product");
 
+
 ?>
 
 <!DOCTYPE html>
@@ -47,10 +48,10 @@
 			<h1>List Produk</h1>
 			<!-- menampilkan isi dari database ke dalam bentuk card -->
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<?php for ($i=0; $i < count($produk) ; $i++) : ?>				
+			<?php for ($i=0; $i < count($produk) ; $i++) : ?>			
 				<div class="col-md mb-5">
           			<div class="card h-100">
-
+          					
           				<?php if(isset($_SESSION["role"])) : // pengecekan role ?>
           					<?php if($_SESSION["role"] == "admin") : ?>
           						<div class="badge bg-warning position-absolute" style="top: 0.5rem; left: 0.5rem"><a href="update.php?id=<?php echo($produk[$i]["id"]); ?>" class="text-dark">Update</a></div>
@@ -59,12 +60,14 @@
           				<?php endif; ?>
 
           				<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-            			<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="Card image cap">
-            			<div class="card-body p-4">
+            			<img class="card-img-top" src="<?php echo($produk[$i]["image_path"]); ?>">
+            			<div class="card-body p-2">
             				<div class="text-center">
             					<h4><?php echo($produk[$i]["name"]); ?> </h4>
 	             				<p class="card-text"><?php echo($produk[$i]["description"]);  ?> </p>
 	             				<p class="card-text">Harga : <?php echo($produk[$i]["price"]);  ?> </p>
+	             				<p class="card-text">Stock : <?php echo($produk[$i]["stock"]);  ?> </p>
+
             				</div>
             			</div>
             			<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -74,11 +77,13 @@
 								<input type="text" name="quantity" class="form-control mx-auto mb-2" style="width: 50px;" />
 								<input type="hidden" name="hidden_name" value="<?php echo $produk[$i]["name"]; ?>" />
 								<input type="hidden" name="hidden_price" value="<?php echo $produk[$i]["price"]; ?>" />
+								<input type="hidden" name="hidden_stock" value="<?php echo $produk[$i]["stock"]; ?>" />
 								<input type="submit" name="add_to_cart"class="btn btn-outline-dark mt-auto" value="Add to Cart"/>
 							</form>
 						</div>
           			</div>
         		</div>
+        		
 			<?php endfor;  ?>
 			</div>
 			
