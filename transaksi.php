@@ -1,9 +1,18 @@
 <?php
     session_start();
     include 'koneksi.php';
+
     date_default_timezone_set('Asia/Jakarta');
 	$waktu = date('Y-m-d H:i:s');
+
 	
+	if (!isset($_SESSION["shopping_cart"])) {
+		echo("<script>
+				alert('cart masih kosong')
+			</script>
+			");
+		echo '<script>window.location="index.php"</script>';
+	}
 	$shopping_cart = $_SESSION["shopping_cart"];
 
 	if (isset($_POST['transaksi'])) {

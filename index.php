@@ -65,7 +65,7 @@
             				<div class="text-center">
             					<h4><?php echo($produk[$i]["name"]); ?> </h4>
 	             				<p class="card-text"><?php echo($produk[$i]["description"]);  ?> </p>
-	             				<p class="card-text">Harga : <?php echo($produk[$i]["price"]);  ?> </p>
+	             				<p class="card-text font-weight-bold" style="font-weight: bold ">Harga : Rp <?php echo($produk[$i]["price"]);  ?> </p>
 	             				<p class="card-text">Stock : <?php echo($produk[$i]["stock"]);  ?> </p>
 
             				</div>
