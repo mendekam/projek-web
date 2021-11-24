@@ -71,7 +71,7 @@
 							<form action="cart.php" method="post" class="text-center">
 								<label for="quantity">Jumlah</label>
 								<input type="hidden" name="id" value="<?php echo $produk[$i]["id"]; ?>" />
-								<input type="text" name="quantity" value="1" class="form-control mx-auto mb-2" style="width: 50px;" />
+								<input type="text" name="quantity" class="form-control mx-auto mb-2" style="width: 50px;" />
 								<input type="hidden" name="hidden_name" value="<?php echo $produk[$i]["name"]; ?>" />
 								<input type="hidden" name="hidden_price" value="<?php echo $produk[$i]["price"]; ?>" />
 								<input type="submit" name="add_to_cart"class="btn btn-outline-dark mt-auto" value="Add to Cart"/>

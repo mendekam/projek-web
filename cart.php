@@ -21,7 +21,6 @@
 			else
 			{
 				echo '<script>alert("Produk sudah ditambahkan")</script>';
-				echo '<script>window.location="index.php</script>';
 			}
 		}
 		else
@@ -33,6 +32,21 @@
 				'produk_quantity'	=>	$_POST["quantity"]
 			);
 			$_SESSION["shopping_cart"][0] = $item_array;
+		}
+	}
+	if(isset($_GET["action"]))
+	{
+		if($_GET["action"] == "delete")
+		{
+			foreach($_SESSION["shopping_cart"] as $keys => $values)
+			{
+				if($values["produk_id"] == $_GET["id"])
+				{
+					unset($_SESSION["shopping_cart"][$keys]);
+					echo '<script>alert("Produk dihapus")</script>';
+					echo '<script>window.location="index.php"</script>';
+				}
+			}
 		}
 	}
 ?>
@@ -96,6 +110,7 @@
 						<td><?php echo $values["produk_quantity"]; ?></td>
 						<td>Rp. <?php echo $values["produk_price"]; ?></td>
 						<td>Rp. <?php echo number_format($values["produk_quantity"] * $values["produk_price"], 2);?></td>
+						<td><a href="cart.php?action=delete&id=<?php echo $values["produk_id"]; ?>"><span class="text-danger">Hapus</span></a></td>
 					</tr>
 					<?php
 							$total = $total + ($values["produk_quantity"] * $values["produk_price"]);
