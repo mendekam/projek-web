@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2021 at 04:11 AM
+-- Generation Time: Nov 24, 2021 at 08:39 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -43,13 +43,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `price`, `stock`, `image_path`, `created_at`, `updated_at`) VALUES
-(1, 'Percobaan 1', 'Barang tidak berharga', 69696969, NULL, 'img/img-produk', '2021-11-22 13:56:42', '2021-11-22 20:56:42'),
-(2, 'TV Elektronik', 'asdsa', 500000, NULL, 'img/img-produk619ba761d6849.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'TV Elektronik', 'wrqwrq', 500000, NULL, 'img/img-produk/619ba7a38e3e7.jpeg', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'TV Elektronik', 'ZDDafasfsa', 500000, NULL, 'img/img-produk/619ba7c6b19cf.png', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'TV Elektronik', '124124', 500000, NULL, 'img/img-produk/619ba9330e80f.png', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'TV Elektronik', 'dgsaf', 500000, NULL, 'img/img-produk/619baae044e77.png', '2021-11-22 14:36:16', '2021-11-22 21:36:16'),
-(7, 'TV Elektronik', 'asfasfasf', 500000, 100, 'img/img-produk/619bae14807a8.png', '2021-11-22 14:49:56', '2021-11-22 21:49:56');
+(1, 'Lampu Belajar', 'Lampu untuk membantu dalam pembelajaran', 50000, 100, 'img/img-produk/619ddde2468ae.jpg', '2021-11-22 13:56:42', '2021-11-24 13:39:21'),
+(2, 'Mesin cuci', 'Mesin untuk mencuci', 600000, 100, 'img/img-produk/619ddd7576f09.jpg', '0000-00-00 00:00:00', '2021-11-24 13:39:47'),
+(3, 'AC', 'Alat pendingin ruangan ', 500000, 100, 'img/img-produk/619ddca41f76d.jpg', '0000-00-00 00:00:00', '2021-11-24 13:40:43'),
+(4, 'Kulkas dua pintu', 'Alat pendingin makanan dan minuman', 699999, 100, 'img/img-produk/619ddcbfd0fc0.jpg', '0000-00-00 00:00:00', '2021-11-24 13:41:23'),
+(5, 'Lampu Neon', 'Lampu neon dengan berbagai varian warna', 30000, 100, 'img/img-produk/619ddccd49e85.jpg', '0000-00-00 00:00:00', '2021-11-24 13:41:58'),
+(6, 'TV Elektronik', 'Televisi masa depan', 700000, 0, 'img/img-produk/619ddcd88e320.jpg', '2021-11-22 14:36:16', '2021-11-24 14:05:34');
 
 -- --------------------------------------------------------
 
